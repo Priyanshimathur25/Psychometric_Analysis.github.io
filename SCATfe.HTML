@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAT</title>
+    <style>
+        button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+body {
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+}
+input[type="radio"]:checked {
+    background-color: #486e49;
+}
+
+input[type="radio"]:focus {
+    outline: 2px solid #4CAF50;
+}
+
+    </style>
+</head>
+<body>
+    <form id="SCATquestionnair">
+    <center>
+    <h2><b><i>SCAT</i></b></h2><h4>Sinha's Comprehensive Anxiety Test</h4>
+   
+</center>
+    <pre>
+ <b>Instructions</b>
+     - The instructions mentioned on the form should be clear.
+     - There is no fixed time limit. However, usually the subject takes 15-20 minutes.
+     - It should be emphasized that there is no right or wrong response.
+     - It should be responded in either Yes or No form. No statement should be left out.
+     - It is undesirable to tell the subject about the aim of the test.
+    </pre>
+    <table border="1">
+        <tr>
+           <th><b>Answer the statement in yes and no.</b></th>
+        </tr>
+        <script>
+        function storeAnswers() {
+            const qs = document.querySelectorAll('tr'); // Select all rows
+            qs.forEach((row, index) => {
+                const selected = row.querySelector('input[type="radio"]:checked');
+                if (selected) {
+                    localStorage.setItem(`question_${index}`, selected.value);
+                }
+            });
+            alert("Answers saved!");
+        }
+
+        function loadAnswers() {
+            const qs = document.querySelectorAll('tr');
+            qs.forEach((row, index) => {
+                const savedValue = localStorage.getItem(`question_${index}`);
+                if (savedValue) {
+                    const radio = row.querySelector(`input[value="${savedValue}"]`);
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                }
+            });
+        }
+
+        window.onload = loadAnswers;
+    </script>
+    
+        <tr>
+            <td>1. Do you feel that you are punished without any crime? </td>
+            <td>
+                <input name="q1" type="radio"value="yes"> yes
+                <input name="q1" type="radio"value="no"> no
+            </td>
+        </tr>
+    
+        <tr>
+        <td>2. Do you lose the balance of your mind even under ordinary pressure of circumstances? </td>
+        <td>
+            <input name="q2" type="radio"value="yes"> yes
+            <input name="q2" type="radio"value="no"> no
+        </td>
+    </tr>
+
+    <tr>
+        <td>3. Do you generally have unsteady mind?</td>
+        <td>
+            <input name="q3" type="radio"value="yes"> yes
+            <input name="q3" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>4. Do you generally stutter while talking to strangers?</td>
+        <td>
+            <input name="q4" type="radio"value="yes"> yes
+            <input name="q4" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>5. Do you sometimes feel that your life is useless?</td>
+        <td>
+            <input name="q5" type="radio"value="yes"> yes
+            <input name="q5" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>6. Do you weep very easily?</td>
+        <td>
+            <input name="q6" type="radio"value="yes"> yes
+            <input name="q6" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>7. Do you generally have the conflict of sin and righteousness in your mind?</td>
+        <td>
+            <input name="q7" type="radio"value="yes"> yes
+            <input name="q7" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>8. Do you get very much excited of the just rememberance of the bitter experiences of your life?</td>
+        <td>
+            <input name="q8" type="radio"value="yes"> yes
+            <input name="q8" type="radio"value="no"> no
+        </td>
+    </tr>
+   
+    <tr>
+        <td>9. Do you generally feel that you would lose your presence of mind?</td>
+        <td>
+            <input name="q9" type="radio"value="yes"> yes
+            <input name="q9" type="radio"value="no"> no
+        </td>
+    </tr>
+
+    <tr>
+        <td>10. Do you feel so scared that your tongue gets dried up?</td>
+        <td>
+            <input name="q10" type="radio"value="yes"> yes
+            <input name="q10" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>11. Do you think yourself to be the sinner without any reason?
+        </td>
+        <td>
+            <input name="q11" type="radio"value="yes"> yes
+            <input name="q11" type="radio"value="no"> no
+        </td>   
+    </tr>
+        
+    <tr>
+        <td>12. Do you constantly have the strain in your nervous system?</td>
+        <td>
+            <input name="q12" type="radio"value="yes"> yes
+            <input name="q12" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>13. Do you occasionally have fear while going out that you may miss your train?</td>
+        <td>
+            <input name="q13" type="radio"value="yes"> yes
+            <input name="q13" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+        <td>14. Do you feel the lack of sleep?</td>
+    
+        <td>
+            <input name="q14" type="radio"value="yes"> yes
+            <input name="q14" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>15. Do you always get yourself busy in some work or other just to forget your problems?</td>
+        <td>
+            <input name="q15" type="radio"value="yes"> yes
+            <input name="q15" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>16. Do you want to run away to some distant place having got tired of your problems?</td>
+    
+        <td>
+            <input name="q16" type="radio"value="yes"> yes
+            <input name="q16" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>17. Do you generally commit such errors which are difficult to correct? </td>
+        <td>
+            <input name="q17" type="radio"value="yes"> yes
+            <input name="q17" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+        <td>18. Do you think that you have committed certain error because of which you are very restless?</td>
+        <td>
+            <input name="q18" type="radio"value="yes"> yes
+            <input name="q18" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>19. Are you afraid of going to high places?</td>
+        <td>
+            <input name="q19" type="radio"value="yes"> yes
+            <input name="q19" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>20. Do you generally feel physical weakness?</td>
+        <td>
+            <input name="q20" type="radio"value="yes"> yes
+            <input name="q20" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>21. Do you generally think that life will remain sad?</td>
+        <td>
+            <input name="q21" type="radio"value="yes"> yes
+            <input name="q21" type="radio"value="no"> no
+        </td>
+    </tr>
+
+    <tr>
+        <td>22. Do you shed tears at the time of your troubles by the little sympathy of others?</td>
+        <td>
+            <input name="q22" type="radio"value="yes"> yes
+            <input name="q22" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>23. Do you generally feel that you are helpless?</td>
+            <td>
+            <input name="q23" type="radio"value="yes"> yes
+            <input name="q23" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>24. Do you generally get last in yourself?</td>
+        <td>
+            <input name="q24" type="radio"value="yes"> yes
+            <input name="q24" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>25. Do you generally work under the condition of strain?</td>
+        <td>
+            <input name="q25" type="radio"value="yes"> yes
+            <input name="q25" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>26. Do you generally remain in anxiety?</td>
+        <td>
+            <input name="q26" type="radio"value="yes"> yes
+            <input name="q26" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>27. Do you generally have mental tensions? </td>
+    
+        <td>
+            <input name="q27" type="radio"value="yes"> yes
+            <input name="q27" type="radio"value="no"> no
+        </td>
+    </tr>
+   <tr>
+        <td>28. Do you generally feel suffocation because of fear?</td>
+        <td>
+            <input name="q28" type="radio"value="yes"> yes
+            <input name="q28" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>29. Do you become very sad by the contradiction of your own statement?</td>
+    
+        <td>
+            <input name="q29" type="radio"value="yes"> yes
+            <input name="q29" type="radio"value="no"> no
+        </td>
+    </tr>
+       
+    <tr>
+    <tr>
+        <td>30. Do you feel that your life in dark?</td>
+        <td>
+            <input name="q30" type="radio"value="yes"> yes
+            <input name="q30" type="radio"value="no"> no
+        </td>
+    </tr>
+    
+    <tr>
+        <td>31. Do you have the fear of being unsuccessful even after thorough preparations?</td>
+        <td>
+            <input name="q31" type="radio"value="yes"> yes
+            <input name="q31" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>32. Do you generally feel so that you are going to lose everything?</td>
+        <td>
+            <input name="q32" type="radio"value="yes"> yes
+            <input name="q32" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>33. Do you get very much confused under such conditions in which you have earlier encountered great loss?</td>
+        <td>
+            <input name="q33" type="radio"value="yes"> yes
+            <input name="q33" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>34. Do you think that life is full of despair?</td>
+        <td>
+            <input name="q34" type="radio"value="yes"> yes
+            <input name="q34" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>35. Do you get very much confused when you see some body in fainting or sense-lessness?</td>
+        <td>
+            <input name="q35" type="radio"value="yes"> yes
+            <input name="q35" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>36. Are you generally restless because of some troubles?</td>
+        <td>
+            <input name="q36" type="radio"value="yes"> yes
+            <input name="q36" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>37. Do you generally think over the past events?</td>
+        <td>
+            <input name="q37" type="radio"value="yes"> yes
+            <input name="q37" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>38. Do you become restless by the erroneous presumptions of others about you?</td>
+        <td>
+            <input name="q38" type="radio"value="yes"> yes
+            <input name="q38" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>39. Do you feel physical tired?</td>
+        <td>
+            <input name="q39" type="radio"value="yes"> yes
+            <input name="q39" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>40. Do you feel that even small things become problems for you?</td>
+        <td>
+            <input name="q40" type="radio"value="yes"> yes
+            <input name="q40" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>41. Do you generally have the fear of being caught by epidemic disease?</td>
+        <td>
+            <input name="q41" type="radio"value="yes"> yes
+            <input name="q41" type="radio"value="no"> no
+        </td>
+    </tr>   
+    <tr>
+       <td>42. Do you generally do such works which make you repented very much?</td>
+       <td>
+        <input name="q42" type="radio"value="yes"> yes
+        <input name="q42" type="radio"value="no"> no
+    </td>
+    </tr>
+    <tr>
+      <td>43. Do you become afraid of even by the imagination of failure?</td>
+      <td>
+        <input name="q43" type="radio"value="yes"> yes
+        <input name="q43" type="radio"value="no"> no
+    </td>
+    </tr>
+    <tr>
+      <td>44. Are you very often restless even by useless talks ?</td>
+      <td>
+        <input name="q44" type="radio"value="yes"> yes
+        <input name="q44" type="radio"value="no"> no
+    </td>
+    </tr>
+          <td>45. Do you generally get disturbed by Imaginary evils?</td>
+          <td>
+            <input name="q45" type="radio"value="yes"> yes
+            <input name="q45" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>46. Do you generally have the complaints of constipation</td>
+        <td>
+            <input name="q46" type="radio"value="yes"> yes
+            <input name="q46" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>47. Do you feel that your fortune does not favour you?</td>
+        <td>
+            <input name="q47" type="radio"value="yes"> yes
+            <input name="q47" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>48. Do you generally get involved in such matters which may make you to forget yourself? </td>
+        <td>
+            <input name="q48" type="radio"value="yes"> yes
+            <input name="q48" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>49. Are you unpleasing by nature?</td>
+        <td>
+            <input name="q49" type="radio"value="yes"> yes
+            <input name="q49" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>50. Do you generally feel difficulty in making decisions?</td>
+        <td>
+            <input name="q50" type="radio"value="yes"> yes
+            <input name="q50" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>51. Do you get touched even by short time waiting?</td>
+        <td>
+            <input name="q51" type="radio"value="yes"> yes
+            <input name="q51" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>52. Do you generally have the fear that your life may-net-be doomed because of conspiracy of others?</td>
+        <td>
+            <input name="q52" type="radio"value="yes"> yes
+            <input name="q52" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>53. Do you generally have the fear of some thing or others?</td>
+        <td>
+            <input name="q53" type="radio"value="yes"> yes
+            <input name="q53" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>54. Do you think yourself to be more unfortunate than others?</td>
+        <td>
+            <input name="q54" type="radio"value="yes"> yes
+            <input name="q54" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>55. Do you feel that others generally misunderstand you?</td>
+        <td>
+            <input name="q55" type="radio"value="yes"> yes
+            <input name="q55" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>56. Do you generally get so restless that it is difficult for you to sit in one place?</td>
+        <td>
+            <input name="q56" type="radio"value="yes"> yes
+            <input name="q56" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+       <td>57. Do you generally feel yourself interior because of your own failures?</td>
+       <td>
+         <input name="q57" type="radio"value="yes"> yes
+         <input name="q57" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+      <td>58. Do you generally have the feeling of loss rather than of gains?</td>
+      <td>
+         <input name="q58" type="radio"value="yes"> yes
+         <input name="q58" type="radio"value="no"> no
+      </td>
+    </tr>
+    <tr>
+        <td>59. Do you lose the presence of your mind even by ordinary bad events?</td>
+        <td>
+            <input name="q59" type="radio"value="yes"> yes
+            <input name="q59" type="radio"value="no"> no
+        </td>
+    </tr>
+        <td>60. Do you have the feeling of excitation in ever work?</td>
+        <td>
+            <input name="q60" type="radio"value="yes"> yes
+            <input name="q60" type="radio"value="no"> no
+        </td>
+    </tr>
+    <tr>
+        <td>61. Do you generally get so much of troubles in any work that you have to leave it incompleted?</td>
+        <td>
+            <input name="q61" type="radio"value="yes"> yes
+            <input name="q61" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>62 Are there such things, the recollection of which make you extremely excited?</td><td>
+            <input name="q62" type="radio"value="yes"> yes
+            <input name="q62" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>63. Do you generally have the feeling of heaviness in your head?</td>
+          <td>
+            <input name="q63" type="radio"value="yes"> yes
+            <input name="q63" type="radio"value="no"> no
+        </td>
+        </tr>
+      <tr>
+        <td>64. Do you feel that people taunt at your talks?</td>
+        <td>
+            <input name="q64" type="radio"value="yes"> yes
+            <input name="q64" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>65. Do you get annoyed even by ordinary opposition?</td>
+          <td>
+            <input name="q65" type="radio"value="yes"> yes
+            <input name="q65" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>66. Do you think that death might have been some how better?</td><td>
+            <input name="q66" type="radio"value="yes"> yes
+            <input name="q66" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>67. Do you generally forget even the recent talks?</td>
+        <td>
+            <input name="q67" type="radio"value="yes"> yes
+            <input name="q67" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>68. Do you constantly have the fear of your defeat?</td><td>
+            <input name="q68" type="radio"value="yes"> yes
+            <input name="q68" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>69. Do you generally get restless and excited?</td><td>
+            <input name="q69" type="radio"value="yes"> yes
+            <input name="q69" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>70. Do you generally get lost in day dreaming?</td><td>
+            <input name="q70" type="radio"value="yes"> yes
+            <input name="q70" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>71. Do you generally get angry with yourself?</td>
+          <td>
+            <input name="q71" type="radio"value="yes"> yes
+            <input name="q71" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>72. Do you generally have the feeling of heart failure?</td>
+          <td>
+            <input name="q72" type="radio"value="yes"> yes
+            <input name="q72" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+         <td>73. Are you generally afraid to seeing a crowd?</td>
+         <td>
+            <input name="q73" type="radio"value="yes"> yes
+            <input name="q73" type="radio"value="no"> no
+         </td>
+      </tr>
+      <tr>
+          <td>74. Do you have difficulty in concentrating at a certain object?</td>
+          <td>
+            <input name="q74" type="radio"value="yes"> yes
+            <input name="q74" type="radio"value="no"> no
+        </td>     
+        </tr>
+          <td>75. Do you have the possibilities of committing errors even after having done it with full care?</td>
+          <td>
+            <input name="q75" type="radio"value="yes"> yes
+            <input name="q75" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>76. Do you ever have the feeling that you lack in sex potency?</td>
+        <td>
+            <input name="q76" type="radio"value="yes"> yes
+            <input name="q76" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>77. Do you have conflicting thoughts?</td>
+          <td>
+            <input name="q77" type="radio"value="yes"> yes
+            <input name="q77" type="radio"value="no"> no
+        </td>
+        </tr>
+      <tr>
+          <td>78. Do you get excited very quickly?</td>
+          <td>
+            <input name="q78" type="radio"value="yes"> yes
+            <input name="q78" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>79. Do you generally have the anxiety of your own failure?</td>
+        <td>
+            <input name="q79" type="radio"value="yes"> yes
+            <input name="q79" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>80. Does ordinary criticism of yourself make you restless?</td>
+          <td>
+            <input name="q80" type="radio"value="yes"> yes
+            <input name="q80" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>81. Do you generally have the feeling of urination or latrine when you have to undertake some important work?</td>
+          <td>
+            <input name="q81" type="radio"value="yes"> yes
+            <input name="q81" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>82. Do you sometime get angry or become pleased with others generally without any reason?</td>
+        <td>
+            <input name="q82" type="radio"value="yes"> yes
+            <input name="q82" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>83. Are you generally in hgih tension when your work is not completed?</td>
+          <td>
+            <input name="q83" type="radio"value="yes"> yes
+            <input name="q83" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>84. Are you generally sad because of unknown reasons?</td>
+          <td>
+            <input name="q84" type="radio"value="yes"> yes
+            <input name="q84" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>85. Do you have anxiety on account of sex matters?</td>
+        <td>
+            <input name="q85" type="radio"value="yes"> yes
+            <input name="q85" type="radio"value="no"> no
+        </td>
+     </tr>
+      <tr>
+          <td>86. Do you feel restless?</td>
+          <td>
+            <input name="q86" type="radio"value="yes"> yes
+            <input name="q86" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>87. Do you have more anxiety than others?</td>
+          <td>
+            <input name="q87" type="radio"value="yes"> yes
+            <input name="q87" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+        <td>88. Do you have such thoughts in your mind which you do not like?</td>
+        <td>
+            <input name="q88" type="radio"value="yes"> yes
+            <input name="q88" type="radio"value="no"> no
+        </td>
+      </tr>
+      <tr>
+          <td>89. Do you have difficulty in respiration?</td>
+          <td>
+            <input name="q89" type="radio"value="yes"> yes
+            <input name="q89" type="radio"value="no"> no
+        </td>
+      </tr>
+          <td>90. Do you get disturbed even by the imaginary sadness?</td>
+          <td>
+            <input name="q90" type="radio"value="yes"> yes
+            <input name="q90" type="radio"value="no"> no
+        </td>
+      </tr>
+    </table>
+        <button type="button" onclick="calculateScore()">Submit</button>
+</form>
+    <script src="scatFE.js"></script>
+
+</body>
+</html>

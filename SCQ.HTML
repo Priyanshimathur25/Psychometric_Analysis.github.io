@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCQ</title>
+    <style>
+        button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+body {
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+}
+input[type="radio"]:checked {
+    background-color: #486e49;
+}
+
+input[type="radio"]:focus {
+    outline: 2px solid #4CAF50;
+}
+    </style>
+ </head>
+ <body>
+     <center>
+    <h2>SCQ</h2><h4>Self Concept Questionnair</h4> 
+ </center>
+ <pre>
+     Instructions
+ 
+     The following instructions were given:
+     
+     • In each item there are five answer options, there are 48 items in total
+     • Don't leave any question and try to complete as soon as possible.
+     • There are no right or wrong answers
+     • Give the first natural answer as it comes to you. When in doubt, give the best possible answer.
+     • Read the questions carefully and a 'V' for whichever option suits you the best.
+     • There is no time limit for this test
+ </pre> 
+    <table border="1">
+        
+        <script>
+        function storeAnswers() {
+            const qs = document.querySelectorAll('tr'); // Select all rows
+            qs.forEach((row, index) => {
+                const selected = row.querySelector('input[type="radio"]:checked');
+                if (selected) {
+                    localStorage.setItem(`question_${index}`, selected.value);
+                }
+            });
+            alert("Answers saved!");
+        }
+
+        function loadAnswers() {
+            const qs = document.querySelectorAll('tr');
+            qs.forEach((row, index) => {
+                const savedValue = localStorage.getItem(`question_${index}`);
+                if (savedValue) {
+                    const radio = row.querySelector(`input[value="${savedValue}"]`);
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                }
+            });
+        }
+
+        window.onload = loadAnswers;
+    </script>
+ <tr>
+    <td>1. Do your friends come to you for advice?</td>
+    <td>
+        <pre>
+        <input name="ques1" type="radio"value="A"> always
+        <input name="ques1" type="radio"value="B"> usually
+        <input name="ques1" type="radio"value="C"> sometimes
+        <input name="ques1" type="radio"value="D"> usually not
+        <input name="ques1" type="radio"value="E"> never
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>2. What do you think about your appearance?</td>
+    <td>
+        <pre>
+            <input name="ques2" type="radio" value="A"> Very beautiful
+            <input name="ques2" type="radio" value="B"> beautiful
+            <input name="ques2" type="radio" value="C"> Satisfactory
+            <input name="ques2" type="radio" value="D"> Not Satisfactory
+            <input name="ques2" type="radio" value="E"> ugly
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>3. How do you find yourself in doing physical work?</td>
+    <td>
+        <pre>
+            <input name="ques3" type="radio" value="A"> Very Strong
+            <input name="ques3" type="radio" value="B"> Strong
+            <input name="ques3" type="radio" value="C"> Average
+            <input name="ques3" type="radio" value="D"> Delicate
+            <input name="ques3" type="radio" value="E"> Very Delicate
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>4. How do you find your temperament?</td>
+    <td>
+        <pre>
+            <input name="ques4" type="radio" value="A"> Always cheerful
+            <input name="ques4" type="radio" value="B"> cheerful
+            <input name="ques4" type="radio" value="C"> Normal
+            <input name="ques4" type="radio" value="D"> Sometimes Unhappy
+            <input name="ques4" type="radio" value="E"> Always un-happy
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>5. How do you like school studies?</td>
+    <td>
+        <pre>
+        <input name="ques5" type="radio" value="A"> Very Good
+        <input name="ques5" type="radio" value="B"> Good
+        <input name="ques5" type="radio" value="C"> Average
+        <input name="ques5" type="radio" value="D"> Not good
+        <input name="ques5" type="radio" value="E"> Not good at all    
+    </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>6. Do you believe in religious customs and traditions?</td>
+    <td>
+        <pre>
+            <input name="ques6" type="radio" value="A"> Very much
+            <input name="ques6" type="radio" value="B"> usually
+            <input name="ques6" type="radio" value="C"> Normally
+            <input name="ques6" type="radio" value="D"> Sometimes
+            <input name="ques6" type="radio" value="E"> never
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>7. Do you participate in criticising others?</td>
+    <td>
+        <pre>
+            <input name="ques7" type="radio" value="A"> Always
+            <input name="ques7" type="radio" value="B"> Mostly
+            <input name="ques7" type="radio" value="C"> Generally 
+            <input name="ques7" type="radio" value="D"> Not Usually 
+            <input name="ques7" type="radio" value="E"> Never
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>8. Do you express your ideas frankly in the presence of other?</td>
+    <td><pre>
+        <input name="ques8" type="radio" value="A"> Always 
+        <input name="ques8" type="radio" value="B"> Mostly
+        <input name="ques8" type="radio" value="C"> Normally 
+        <input name="ques8" type="radio" value="D"> Sometimes 
+        <input name="ques8" type="radio" value="E"> Never 
+        </pre></td>
+ </tr>
+ <tr>
+    <td>9. How do you like your complexion?</td>
+    <td>
+        <pre>
+            <input name="ques9" type="radio" value="A"> Very Beautiful 
+            <input name="ques9" type="radio" value="B"> Beautiful 
+            <input name="ques9" type="radio" value="C"> Normal 
+            <input name="ques9" type="radio" value="D"> Not so Beautiful 
+            <input name="ques9" type="radio" value="E"> Ugly
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>10. Do you think yourself one of the cheeful persons?</td>
+    <td><pre>
+        <input name="ques10" type="radio" value="A"> Always 
+        <input name="ques10" type="radio" value="B"> Mostly 
+        <input name="ques10" type="radio" value="C"> Noramlly
+        <input name="ques10" type="radio"value="D"> No 
+        <input name="ques10" type="radio"value="E"> Never
+        </pre></td>
+ </tr>
+ <tr>
+    <td>11. Do you behave abonrmally also?</td>
+    <td><pre>
+        <input name="ques11" type="radio"value="A"> Always 
+        <input name="ques11" type="radio"value="B"> Mostly 
+        <input name="ques11" type="radio"value="C"> Sometimes 
+        <input name="ques11" type="radio"value="D"> Seldon
+        <input name="ques11" type="radio"value="E"> never
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>12. Do you think yourself an experienced person?</td>
+    <td>
+        <pre>
+            <input name="ques12" type="radio"> Highly
+            <input name="ques12" type="radio"> Usually 
+            <input name="ques12" type="radio"> Average 
+            <input name="ques12" type="radio"> Less experienced
+            <input name="ques12" type="radio"> without any Experience
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>13. Do you think about your teachers?</td>
+    <td>
+        <pre>
+            <input name="ques13" type="radio"value="A"> Always 
+            <input name="ques13" type="radio"value="A"> Mostly 
+            <input name="ques13" type="radio"value="A"> Noramlly 
+            <input name="ques13" type="radio"value="A"> Usually not
+            <input name="ques13" type="radio"value="A"> never
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>14. Do you think yourself to be a cool-tempered man?</td>
+    <td><pre>
+        <input name="ques14" type="radio"value="A"> Very Much 
+        <input name="ques14" type="radio"value="B"> Usually 
+        <input name="ques14" type="radio"value="C"> Average
+        <input name="ques14" type="radio"value="D"> Some disturbed
+        <input name="ques14" type="radio"value="E"> Much disturbed 
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>15. Are you regular in doing your home-work assign-ments?</td>
+    <td>
+        <pre>
+            <input name="ques15" type="radio"value="A"> ALways 
+            <input name="ques15" type="radio"value="B"> Mostly 
+            <input name="ques15" type="radio"value="C"> Normally 
+            <input name="ques15" type="radio"value="D"> Sometimes 
+            <input name="ques15" type="radio"value="E"> never
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>16. Do you insult others?</td>
+    <td>
+        <pre>
+            <input name="ques16" type="radio"value="A"> Never 
+            <input name="ques16" type="radio"value="B"> Not often 
+            <input name="ques16" type="radio"value="C"> Usually 
+            <input name="ques16" type="radio"value="D"> Mostly 
+            <input name="ques16" type="radio"value="E"> Always 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>17. Do you have difficulty in understanding something when the teacher explains in the class?</td>
+    <td>
+        <pre>
+            <input name="ques17" type="radio"value="A"> Never
+            <input name="ques17" type="radio"value="B"> Usually 
+            <input name="ques17" type="radio"value="C"> Generally 
+            <input name="ques17" type="radio"value="D"> Often feel difficult 
+            <input name="ques17" type="radio"value="E"> Usually feel difficult 
+            
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>18. Do you think if you get an opportunity you can dis-cover something new?</td>
+    <td>
+        <pre>
+            <input name="ques18" type="radio"value="A"> Definitely
+            <input name="ques18" type="radio"value="B"> Mostly Probably 
+            <input name="ques18" type="radio"value="C"> Doubtful
+            <input name="ques18" type="radio"value="D"> Mostly 
+            <input name="ques18" type="radio"value="E"> Not at all 
+
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>19. Do you feel irrinted if somebody finds fault with your work?</td>
+    <td>
+        <pre>
+            <input name="ques19" type="radio"value="A"> Never 
+            <input name="ques19" type="radio"value="B"> Usually 
+            <input name="ques19" type="radio"value="C"> Sometimes 
+            <input name="ques19" type="radio"value="D"> Usually 
+            <input name="ques19" type="radio"value="E"> Always
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>20. How do you find your personality?</td>
+    <td>
+        <pre>
+            <input name="ques20" type="radio"value="A"> Most attractive
+            <input name="ques20" type="radio"value="B"> Attractive 
+            <input name="ques20" type="radio"value="C"> Normal 
+            <input name="ques20" type="radio"value="D"> Unattractive
+            <input name="ques20" type="radio"value="E"> totally unattractive
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>21. How do you like the com-pany of others?</td>
+    <td>
+        <pre>
+            <input name="ques21" type="radio"value="A"> Always Good 
+            <input name="ques21" type="radio"value="B"> Mostly good 
+            <input name="ques21" type="radio"value="C"> Usually good
+            <input name="ques21" type="radio"value="D"> Sometimes dislike
+            <input name="ques21" type="radio"value="E"> Never Like 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>22. How much are you satis-fied with your weight?</td>
+    <td>
+        <pre>
+            <input name="ques22" type="radio"value="A"> Fully Satisfied 
+            <input name="ques22" type="radio"value="B"> Satisfied 
+            <input name="ques22" type="radio"value="C"> Usually satisfied 
+            <input name="ques22" type="radio"value="D"> Not so satisfied 
+            <input name="ques22" type="radio"value="E"> Unsatisfed
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>23. Do you feel irriated while you face petty difficulties?</td>
+    <td>
+        <pre>
+            <input name="ques23" type="radio"value="A"> Never 
+            <input name="ques23" type="radio"value="B"> Mostly Not
+            <input name="ques23" type="radio"value="C"> Generally 
+            <input name="ques23" type="radio"value="D"> Sometimes 
+            <input name="ques23" type="radio"value="E"> Always 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>24. Are you coward by nature?</td>
+    <td><pre>
+        <input name="ques24" type="radio"value="A"> Not at all 
+        <input name="ques24" type="radio"value="B"> Not much 
+        <input name="ques24" type="radio"value="C"> Noraml 
+        <input name="ques24" type="radio"value="D"> Usually 
+        <input name="ques24" type="radio"value="E"> Very much 
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>25. How much are you satis-fied with the present posi-tion of your studies in class?</td>
+    <td>
+        <pre>
+            <input name="ques25" type="radio"value="A"> Completely satisfied 
+            <input name="ques25" type="radio"value="B"> Somewhat satified 
+            <input name="ques25" type="radio"value="C"> Average
+            <input name="ques25" type="radio"value="D"> Some what dissatisfied
+            <input name="ques25" type="radio"value="E"> totally dissatisfied 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>26. How do you like school examination?</td>
+    <td>
+        <pre>
+            <input name="ques26" type="radio"value="A"> like very much 
+            <input name="ques26" type="radio"value="B"> Mostly like
+            <input name="ques26" type="radio"value="C">generally like 
+            <input name="ques26" type="radio"value="D"> seldon Like
+            <input name="ques26" type="radio"value="E"> Never like 
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>27. How is your voice?</td>
+    <td>
+        <pre>
+            <input name="ques27" type="radio"value="A"> Very good 
+            <input name="ques27" type="radio"value="B"> Good 
+            <input name="ques27" type="radio"value="C"> Normal 
+            <input name="ques27" type="radio"value="D"> Not good 
+            <input name="ques27" type="radio"value="E"> Unsatisfactory  
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>28. Are you curious to know the end while reading a novel or seeing a movie?</td>
+    <td>
+        <pre>
+            <input name="ques28" type="radio"value="A"> Always
+            <input name="ques28" type="radio"value="B"> Usually 
+            <input name="ques28" type="radio"value="C"> Normally 
+            <input name="ques28" type="radio"value="D"> No
+            <input name="ques28" type="radio"value="E"> Never 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>29. How do you find your health?</td>
+    <td><pre>
+        <input name="ques29" type="radio"value="A"> Very Good
+        <input name="ques29" type="radio"value="B"> Good 
+        <input name="ques29" type="radio"value="C"> Average 
+        <input name="ques29" type="radio"value="D"> weak
+        <input name="ques29" type="radio"value="E"> Feeble 
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>30. How is your attendance in the class?</td>
+    <td>
+        <pre>
+            <input name="ques30" type="radio"value="A"> Always present
+            <input name="ques30" type="radio"value="B"> Usually Present
+            <input name="ques30" type="radio"value="C"> Average
+            <input name="ques30" type="radio"value="D"> Generally absent
+            <input name="ques30" type="radio"value="E"> Usually absent 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>31. How much are you satis-fied with your height?</td>
+    <td>
+        <pre>
+            <input name="ques31" type="radio"value="A"> Fully Satisfied
+            <input name="ques31" type="radio"value="B"> Satisfied
+            <input name="ques31" type="radio"value="C"> Normal 
+            <input name="ques31" type="radio"value="D"> somewhat dissatisfied  
+            <input name="ques31" type="radio"value="E"> Fully dissatisfied
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>32. Do you try to get first po-sition in the tests given in the class?</td>
+    <td>
+        <pre>
+            <input name="ques32" type="radio"value="A"> Always
+            <input name="ques32" type="radio"value="B"> Usually
+            <input name="ques32" type="radio"value="C"> Generally
+            <input name="ques32" type="radio"value="D"> Often not
+            <input name="ques32" type="radio"value="E"> Never 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>33. Do you take care of the merits and demerits of a work before doing it?</td>
+    <td>
+        <pre>
+            <input name="ques33" type="radio"value="A"> Always
+            <input name="ques33" type="radio"value="B"> Usually
+            <input name="ques33" type="radio"value="C"> Generally
+            <input name="ques33" type="radio"value="D"> usually not
+            <input name="ques33" type="radio"value="E"> Never 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>34. Where do you place your self while speaking truth?</td>
+    <td>
+        <pre>
+            <input name="ques34" type="radio"value="A"> Always speak truth
+            <input name="ques34" type="radio"value="B"> Usually speak truth
+            <input name="ques34" type="radio"value="C"> Generally speak truth 
+            <input name="ques34" type="radio"value="D"> Usually hesitate in speaking truth 
+            <input name="ques34" type="radio"value="E"> Always have to resort to falsehood
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>35. Where do you place your self in obeying public rules e.g. rules pertaining to public places, like road, park, railway station etc.?</td>
+    <td>
+        <pre>
+            <input name="ques35" type="radio"value="A"> Always obey rules
+            <input name="ques35" type="radio"value="B"> Usually obey rules
+            <input name="ques35" type="radio"value="C"> Generally obey rules
+            <input name="ques35" type="radio"value="D"> Usually do not obey
+            <input name="ques35" type="radio"value="E"> Never care for rules
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>36. Are you more intelligent than your colleagues?</td>
+    <td>
+        <pre>
+            <input name="ques36" type="radio"value="A"> yes
+            <input name="ques36" type="radio"value="B"> Usually
+            <input name="ques36" type="radio"value="C"> Generally
+            <input name="ques36" type="radio"value="D"> Less
+            <input name="ques36" type="radio"value="E"> Not at all
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>37. Do you take part in orga-nizing it when your class mates go to picnic etc.?</td>
+    <td>
+        <pre>
+            <input name="ques37" type="radio"value="A"> Always 
+            <input name="ques37" type="radio"value="B"> Usually 
+            <input name="ques37" type="radio"value="C"> Generally 
+            <input name="ques37" type="radio"value="D"> Usually not
+            <input name="ques37" type="radio"value="E"> Never 
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>38. Do you solve yourself the difficulties and problems of your studies?</td>
+    <td><pre>
+        <input name="ques38" type="radio"value="A"> Always solve 
+        <input name="ques38" type="radio"value="B"> Usually Solve
+        <input name="ques38" type="radio"value="C"> Generally solve
+        <input name="ques38" type="radio"value="D"> Usually can not
+        <input name="ques38" type="radio"value="E"> Always help to others
+        </pre></td>
+ </tr>
+ <tr>
+    <td>39. How much do you attend to artistic aspect of the photograph while seeing or making it?</td>
+    <td>
+        <pre>
+            <input name="ques39" type="radio"value="A"> give very much attention
+            <input name="ques39" type="radio"value="B"> give much 
+            <input name="ques39" type="radio"value="C"> give average attention 
+            <input name="ques39" type="radio"value="D"> give some attention
+            <input name="ques39" type="radio"value="E"> do not give some attention
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>40. What will you do if you are doing some important work and your friends ask you to accompany them for a walk?</td>
+    <td>
+        <pre>
+            <input name="ques40" type="radio"value="A"> will start immediately
+            <input name="ques40" type="radio"value="B"> will go after thinking for sometime 
+            <input name="ques40" type="radio"value="C"> will keep silent
+            <input name="ques40" type="radio"value="D"> will not go after thinking for sometime 
+            <input name="ques40" type="radio"value="E"> will refuse at once
+        </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>41. While taking the examination you are not able to answer some questions and a book of the same subject is lying near you, will you help of the book?</td>
+    <td>
+        <pre>
+            <input name="ques41" type="radio"value="A"> will never do such thing
+            <input name="ques41" type="radio"value="B"> Do not have the courage to do inspite of will 
+            <input name="ques41" type="radio"value="C"> Generally do not do this 
+            <input name="ques41" type="radio"value="D"> will use the book if get an opportunity
+            <input name="ques41" type="radio"value="E "> Will immediately use the book
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>42. If you get an opportunity to drink water in the house of so called low caste persons, what will you do?</td>
+    <td>
+        <pre>
+            <input name="ques42" type="radio"value="A"> Shall take water
+            <input name="ques42" type="radio"value="B"> Will take water after some consideration 
+            <input name="ques42" type="radio"value="C"> Will care for cleanliness 
+            <input name="ques42" type="radio"value="D"> will take water but would tell nobody
+            <input name="ques42" type="radio"value="E"> Will not take water
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>43. Do you hesitate in mixing with persons of opposite sex?</td>
+    <td>
+        <pre>
+            <input name="ques43" type="radio"value="A"> Do not hesitate at all 
+            <input name="ques43" type="radio"value="B"> Sometimes hesitate 
+            <input name="ques43" type="radio"value="C"> Generally do not hesitate
+            <input name="ques43" type="radio"value="D"> Usually hesitate 
+            <input name="ques43" type="radio"value="E"> Always hesitate
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>44. You are standing in the bus que for a long time when bus comes, the conductor takes some passengers and stops at your tum because there is no space in the bus, what will you do in these circumstances?</td>
+    <td>
+        <pre>
+            <input name="ques44" type="radio"value="A"> will wait for next bus
+            <input name="ques44" type="radio"value="B"> will request the conductor
+            <input name="ques44" type="radio"value="C"> will run and try to board the bus
+            <input name="ques44" type="radio"value="D"> will push the other passengers and try to board the bus
+            <input name="ques44" type="radio"value="E"> will make a noise
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>45. What will you do if you come to know of immoral character of your friend?</td>
+    <td>
+        <pre>
+            <input name="ques45" type="radio"value="A"> will comepletely break the friendship
+            <input name="ques45" type="radio"value="B"> will lessen the friendship 
+            <input name="ques45" type="radio"value="C"> will continue friendship but will try to make him understand 
+            <input name="ques45" type="radio"value="D"> will continue the friendship as it
+            <input name="ques45" type="radio"value="E"> will strenghth the friendship
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>46. You have to do four tasks-(a) you have to call the doctor to show your sick brother (b) you have to do the preparation for going out the next day (c) you have to read novel (d) the friend is going away, you have to go to see him. What will you do in the first place?</td>
+    <td>
+        <pre>
+            <input name="ques46" type="radio"value="A"> Will call the doctor to show the sick brother
+            <input name="ques46" type="radio"value="B"> Will prepare for going out
+            <input name="ques46" type="radio"value="C"> Will read novel
+            <input name="ques46" type="radio"value="D"> Will go to see the friend
+            <input name="ques46" type="radio"value="E"> Will not do any of the above mentioned work.
+
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>47. Your friend gives you one thousand rupees to keep when you count they are eleven hundred. What will you do?</td>
+    <td>
+        <pre>
+            <input name="ques47" type="radio"value="A"> Will return one hundred rupees to the friend at once
+            <input name="ques47" type="radio"value="B"> Will return 1100 rupees while retuming them
+            <input name="ques47" type="radio"value="C"> Will return 1100 rupees while retuming them
+            <input name="ques47" type="radio"value="D"> it the friend does not come to know, will take out one hundred rupees if possible
+            <input name="ques47" type="radio"value="E"> Shall trike out une hundred rupeus
+            </pre>
+    </td>
+ </tr>
+ <tr>
+    <td>48. Do you like to do the work keeping in mind the desire of other?</td>
+    <td><pre>
+        <input name="ques48" type="radio"value="A"> Always do the work keeping in mind the desire of athens
+        <input name="ques48" type="radio"value="B"> Usually do the work keeping in mind the denims of others
+        <input name="ques48" type="radio"value="C"> Generally do the work keeping in mind the desires of others
+        <input name="ques48" type="radio"value="D"> Sometimes do not care for the liking of other
+        <input name="ques48" type="radio"value="E"> Sometimes do not care for the liking of other
+
+
+        </pre>
+    </td>
+ </tr>
+ 
+
+
+</table>
+<button type="button" onclick="calculateScore()">Submit</button>
+
+<script src="scq.js"></script>
+
+</body>
+</html>

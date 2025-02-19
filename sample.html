@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychometric Tests</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .question { margin-bottom: 10px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Psychometric Tests</h1>
+        <p>Select a test:</p>
+        <select id="testType">
+            <option value="personality">Personality Test</option>
+            <option value="iq">IQ Test</option>
+            <option value="eq">Emotional Intelligence Test</option>
+        </select>
+        <button onclick="startTest()">Start</button>
+        <div id="testArea"></div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const tests = {
+            personality: [
+                { q: "Do you enjoy social gatherings?", a: ["Yes", "No"] },
+                { q: "Do you prefer structured plans?", a: ["Yes", "No"] }
+            ],
+            iq: [
+                { q: "What is 12 + 8?", a: ["18", "20"] },
+                { q: "Solve: 5 * 6", a: ["25", "30"] }
+            ],
+            eq: [
+                { q: "Do you find it easy to understand others' emotions?", a: ["Yes", "No"] },
+                { q: "Can you stay calm under stress?", a: ["Yes", "No"] }
+            ]
+        };
+        
+        function startTest() {
+            const testType = document.getElementById("testType").value;
+            const testArea = document.getElementById("testArea");
+            testArea.innerHTML = "";
+            
+            tests[testType].forEach((question, index) => {
+                const div = document.createElement("div");
+                div.classList.add("question");
+                div.innerHTML = `<p>${question.q}</p>` +
+                    question.a.map(answer => `<button onclick="recordAnswer('${testType}', ${index}, '${answer}')">${answer}</button>`).join(" ");
+                testArea.appendChild(div);
+            });
+        }
+        
+        let answers = {};
+        
+        function recordAnswer(testType, index, answer) {
+            answers[testType] = answers[testType] || [];
+            answers[testType][index] = answer;
+            if (answers[testType].length === tests[testType].length) {
+                showResult(testType);
+            }
+        }
+        
+        function showResult(testType) {
+            let resultText = "";
+            if (testType === "personality") {
+                resultText = answers[testType].includes("Yes") ? "You are extroverted!" : "You are introverted!";
+            } else if (testType === "iq") {
+                resultText = answers[testType].includes("30") ? "High IQ!" : "Average IQ!";
+            } else if (testType === "eq") {
+                resultText = answers[testType].includes("Yes") ? "High Emotional Intelligence!" : "Needs Improvement!";
+            }
+            document.getElementById("result").innerText = `Result: ${resultText}`;
+        }
+    </script>
+</body>
+</html>
